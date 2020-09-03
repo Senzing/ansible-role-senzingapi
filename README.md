@@ -1,4 +1,4 @@
-Role Name
+Ansible Role: Senzing API
 =========
 
 A brief description of the role goes here.
