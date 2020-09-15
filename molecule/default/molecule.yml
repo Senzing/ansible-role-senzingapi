@@ -4,10 +4,34 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
-    image: docker.io/pycontribs/centos:8
+  - name: debian-test
+    command: /sbin/init
+    image: senzingfactory/debian-molecule-test-environment:1.0.0
+    privileged: true
     pre_build_image: true
+    tty: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: centos-test
+    command: /sbin/init
+    image: senzingfactory/centos-molecule-test-environment:1.0.0
+    privileged: true
+    pre_build_image: true
+    tty: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - side_effect
+    - verify
+    - destroy
 provisioner:
-  name: ansible
-verifier:
   name: ansible

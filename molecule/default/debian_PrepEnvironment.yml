@@ -1,0 +1,12 @@
+---
+- name: Intall environmental components if needed
+  apt:
+    name:
+      - "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - python3-pip
+    - python3-dev
+    - git
+  when: "'{{ item }}' not in required_packages_check.ansible_facts.packages"

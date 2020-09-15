@@ -21,9 +21,12 @@
 
 - name: add Senzing repository
   yum:
-    name: {{senzing_repo_url}}
+    name: "{{ senzing_repo_url }}"
     state: present
 
+- pause:
+    seconds: 5
+
 - name: Install Senzing API
-  raw: export SENZING_ACCEPT_EULA={{ senzing_eula }}; dnf install -y senzingapi-{{senzing_g2_release_version}}
+  raw: export SENZING_ACCEPT_EULA={{ senzing_eula }}; dnf install -y senzingapi-{{ senzing_g2_release_version }}
   when: "'senzingapi' not in required_packages_check.ansible_facts.packages"

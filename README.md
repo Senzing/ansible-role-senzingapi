@@ -1,36 +1,57 @@
 Ansible Role: Senzing API
 =========
 
-A brief description of the role goes here.
+This role installs Senzing API for Debian and RHEL systems.
 
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Available variables are listed below, along with default values (see `defaults/main.yml`):
+
+    senzing_project_dir: /var/senzing
+    senzing_g2_release_version: 2.0.0-20197
+    senzing_project_create: N
+    senzing_eula:
+
+Substitute the variables by passing in a variable file.
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: senzing
+      vars:
+        senzing_g2_release_version: 2.0.0-20197
+        senzing_eula: I_ACCEPT_THE_SENZING_EULA
+        senzing_project_create: Y
+        senzing_project_dir: /var/senzing
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: senzing.senzingapi }
+
+Testing Role
+----------------
+Use the following command to test with molecule
+
+```ansible
+docker run --rm -it \
+    --env MOLECULE_NO_LOG="false" \
+    -v "$(pwd)":/tmp/$(basename "${PWD}"):ro \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v ~/.ssh:/root/.ssh \
+    -w /tmp/$(basename "${PWD}") \
+    quay.io/ansible/molecule:3.0.4 \
+    molecule test
+```
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------

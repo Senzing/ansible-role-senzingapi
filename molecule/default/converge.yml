@@ -1,5 +1,17 @@
 ---
 - name: Converge
+  vars:
+    senzing_eula: I_ACCEPT_THE_SENZING_EULA
+    senzing_g2_release_version: 2.0.0-20197
+  pre_tasks:
+    - name: Gather package facts
+      package_facts:
+        manager: auto
+      register: required_packages_check
+    - include_tasks: redhat_PrepEnvironment.yml
+      when: ansible_os_family == 'RedHat'
+    - include_tasks: debian_PrepEnvironment.yml
+      when: ansible_os_family == 'Debian'
   hosts: all
   tasks:
     - name: "Include ansible-role-senzingapi"

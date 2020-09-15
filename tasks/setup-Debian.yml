@@ -1,7 +1,3 @@
-- name: Update apt-cache
-  apt:
-    update_cache: yes
-
 - name: Install apt-transport-https if not present
   apt:
     name: apt-transport-https
@@ -31,8 +27,12 @@
 
 - name: Install a senzingrepo deb package.
   apt:
-    deb: {{senzing_repo_url}}
+    deb: "{{ senzing_repo_url }}"
   when: "'senzingrepo' not in required_packages_check.ansible_facts.packages"
+
+- name: Update apt-cache
+  apt:
+    update_cache: yes
 
 - name: Install Senzing API
   raw: export SENZING_ACCEPT_EULA={{ senzing_eula }}; apt-get install -y senzingapi={{ senzing_g2_release_version }}
