@@ -27,7 +27,7 @@ Example Playbook
     - hosts: senzing
       vars:
         senzing_g2_release_version: 2.0.0-20197
-        senzing_eula: <the value from this [link](https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula)>
+        senzing_eula: &lt;the value from this <a href="https://github.com/Senzing/knowledge-base/blob/master/lists/environment-variables.md#senzing_accept_eula">link</a>&gt;
         senzing_project_create: Y
         senzing_project_dir: /var/senzing
       roles:
