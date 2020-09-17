@@ -12,7 +12,3 @@
 
 # Setup/install tasks.
 - include_tasks: "setup-{{ ansible_os_family }}.yml"
-
-# Configure senzing project
-- include_tasks: senzing-project.yml
-  when: senzing_project_create == 'Y'

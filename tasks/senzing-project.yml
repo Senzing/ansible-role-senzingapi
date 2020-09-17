@@ -1,4 +1,0 @@
----
-- name: Create Senzing project directory
-  shell:
-    cmd: "python3 /opt/senzing/g2/python/G2CreateProject.py {{ senzing_project_dir }}"
