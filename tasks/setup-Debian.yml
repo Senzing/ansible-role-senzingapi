@@ -1,0 +1,39 @@
+- name: Install apt-transport-https if not present
+  apt:
+    name: apt-transport-https
+    state: present
+  when: "'apt-transport-https' not in required_packages_check.ansible_facts.packages"
+
+- name: Install gnupg2 if not present
+  apt:
+    name:
+      - gnupg2
+    state: present
+  when: "'gnupg2' not in required_packages_check.ansible_facts.packages"
+
+- name: Install wget if not present
+  apt:
+    name:
+      - wget
+    state: present
+  when: "'wget' not in required_packages_check.ansible_facts.packages"
+
+- name: Install python3-dev if not present
+  apt:
+    name:
+      - python3-dev
+    state: present
+  when: "'python3-dev' not in required_packages_check.ansible_facts.packages"
+
+- name: Install a senzingrepo deb package.
+  apt:
+    deb: "{{ senzing_repo_url }}"
+  when: "'senzingrepo' not in required_packages_check.ansible_facts.packages"
+
+- name: Update apt-cache
+  apt:
+    update_cache: yes
+
+- name: Install Senzing API
+  raw: export SENZING_ACCEPT_EULA={{ lookup('env','SENZING_EULA') }}; apt-get install -y senzingapi={{ senzing_g2_release_version }}
+  when: "'senzingapi' not in required_packages_check.ansible_facts.packages"

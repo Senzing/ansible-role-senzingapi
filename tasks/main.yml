@@ -1,0 +1,14 @@
+---
+# tasks file for ansible-role-senzingapi
+
+# Variable configuration.
+- name: Gather package facts
+  package_facts:
+    manager: auto
+  register: required_packages_check
+
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+# Setup/install tasks.
+- include_tasks: "setup-{{ ansible_os_family }}.yml"

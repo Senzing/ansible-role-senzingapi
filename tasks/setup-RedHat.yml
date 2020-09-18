@@ -1,0 +1,32 @@
+- name: Install gcc if not present
+  dnf:
+    name:
+      - gcc
+    state: present
+  when: "'gcc' not in required_packages_check.ansible_facts.packages"
+
+- name: Install gcc-c++ if not present
+  dnf:
+    name:
+      - gcc-c++
+    state: present
+  when: "'gcc-c++' not in required_packages_check.ansible_facts.packages"
+
+- name: Install python3-devel if not present
+  dnf:
+    name:
+      - python3-devel
+    state: present
+  when: "'python3-devel' not in required_packages_check.ansible_facts.packages"
+
+- name: add Senzing repository
+  yum:
+    name: "{{ senzing_repo_url }}"
+    state: present
+
+- pause:
+    seconds: 5
+
+- name: Install Senzing API
+  raw: export SENZING_ACCEPT_EULA={{ lookup('env','SENZING_EULA') }}; dnf install -y senzingapi-{{ senzing_g2_release_version }}
+  when: "'senzingapi' not in required_packages_check.ansible_facts.packages"
