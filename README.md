@@ -1,12 +1,22 @@
 Ansible Role: Senzing API
 =========
 
+[![Build Status](https://travis-ci.com/Senzing/ansible-role-senzingapi.svg?branch=master)](https://travis-ci.com/github/Senzing/ansible-role-senzingapi)
+
 This role installs Senzing API for Debian and RHEL systems.
 
 Installation
 --------------
 
 Use ansible-galaxy install `senzing.senzing_api` to install the latest stable release of the role on your system.
+
+The following are the supported Senzing API versions.
+
+| Senzing API version|Galaxy version|Path to Install|
+|----------|:-------------:|:-------------:|
+|2.2.1|2.2.1|`ansible-galaxy install senzing.senzing_api`:2.2.1`|
+|2.1.0|2.1.0|`ansible-galaxy install senzing.senzing_api`:2.1.0`|
+|2.0.0|2.0.0|`ansible-galaxy install senzing.senzing_api`:2.0.0`|
 
 Role Variables
 --------------
