@@ -3,6 +3,10 @@ Ansible Role: Senzing API
 
 This role installs Senzing API for Debian and RHEL systems.
 
+Installation
+--------------
+
+Use ansible-galaxy install `senzing.senzing_api` to install the latest stable release of the role on your system.
 
 Role Variables
 --------------
@@ -33,10 +37,10 @@ The senzing eula value can be found [here](https://github.com/Senzing/knowledge-
 
 Testing Role
 ----------------
-Use the following command to test with molecule
+Use the following command to test this ansible role with molecule
 
 ```console
-export SENZING_EULA = <Senzing EULA Code>
+export SENZING_EULA = <Insert Senzing EULA here>
 docker run --rm -it \
     --env MOLECULE_NO_LOG="false" \
     -v "$(pwd)":/tmp/$(basename "${PWD}"):ro \
@@ -50,4 +54,9 @@ docker run --rm -it \
 License
 -------
 
-MIT
+Apache 2
+
+Author Information
+------------------
+
+This role was created in 2020 by [Mah Chia Hui](https://github.com/mahchiahui)
