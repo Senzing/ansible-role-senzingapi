@@ -6,24 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+### Added to 2.2.1
 
-- Thing 5
-- Thing 4
+- matches senzingapi 2.2.1 release
 
-## [1.0.1] - yyyy-mm-dd
+### Added to 2.1.0
 
-### Added to 1.0.1
+- matches senzingapi 2.1.0 release
 
-- Thing 3
+### Added to 2.0.0
 
-### Fixed in 1.0.1
-
-- Thing 2
-
-## [1.0.0] - yyyy-mm-dd
-
-### Added to 1.0.0
-
-- Thing 2
-- Thing 1
+- matches senzingapi 2.0.0 release
