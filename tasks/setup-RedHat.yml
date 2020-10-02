@@ -24,7 +24,8 @@
     name: "{{ senzing_repo_url }}"
     state: present
 
-- pause:
+- name: 5 seconds pause
+  pause:
     seconds: 5
 
 - name: Install Senzing API
