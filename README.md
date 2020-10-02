@@ -41,7 +41,7 @@ The senzing eula value can be found [here](https://github.com/Senzing/knowledge-
       vars:
         senzing_g2_release_version: 2.0.0-20197
       environment:
-        SENZING_EULA: '<Insert Senzing EULA here>'
+        SENZING_ACCEPT_EULA: '<Insert Senzing EULA here>'
       roles:
         - { role: senzing.senzingapi }
 
@@ -50,7 +50,7 @@ Testing Role
 Use the following command to test this ansible role with molecule
 
 ```console
-export SENZING_EULA = <Insert Senzing EULA here>
+export SENZING_ACCEPT_EULA = <Insert Senzing EULA here>
 docker run --rm -it \
     --env MOLECULE_NO_LOG="false" \
     -v "$(pwd)":/tmp/$(basename "${PWD}"):ro \

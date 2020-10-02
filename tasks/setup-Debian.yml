@@ -35,5 +35,5 @@
     update_cache: yes
 
 - name: Install Senzing API
-  raw: export SENZING_ACCEPT_EULA={{ lookup('env','SENZING_EULA') }}; apt-get install -y senzingapi={{ senzing_g2_release_version }}
+  raw: apt-get install -y senzingapi={{ senzing_g2_release_version }}
   when: "'senzingapi' not in required_packages_check.ansible_facts.packages"
