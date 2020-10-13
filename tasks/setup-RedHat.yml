@@ -29,5 +29,5 @@
     seconds: 5
 
 - name: Install Senzing API
-  raw: export SENZING_ACCEPT_EULA={{ lookup('env','SENZING_ACCEPT_EULA') }}; dnf install -y senzingapi-{{ senzing_g2_release_version }}
+  shell: export SENZING_ACCEPT_EULA={{ lookup('env','SENZING_ACCEPT_EULA') }}; dnf install -y senzingapi-{{ senzing_g2_release_version }}
   when: "'senzingapi' not in required_packages_check.ansible_facts.packages"
