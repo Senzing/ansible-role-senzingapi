@@ -1,4 +1,4 @@
 ---
 # defaults file for ansible-role-senzingapi
-senzing_g2_release_version: 2.0.0-20197
+senzing_g2_release_version: 2.1.0-20246
 senzing_accept_eula: ""
